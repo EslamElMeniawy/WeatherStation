@@ -1,5 +1,7 @@
 package elmeniawy.eslam.weatherstation.model
 
+import android.arch.persistence.room.ColumnInfo
+import android.arch.persistence.room.Entity
 import org.threeten.bp.Instant
 
 /**
@@ -8,6 +10,9 @@ import org.threeten.bp.Instant
  * Created by Eslam El-Meniawy on 29-Jul-2018.
  * CITC - Mansoura University
  */
+@Entity(
+        primaryKeys = ["retrievalLatitude", "retrievalLongitude"]
+)
 data class CurrentWeather(
         val latitude: Float,
         val longitude: Float,
@@ -18,5 +23,9 @@ data class CurrentWeather(
         val weatherType: String,
         val weatherDescription: String,
         val icon: String,
-        val timestamp: Instant
-)
+        val timestamp: Instant,
+        @ColumnInfo(index = true)
+        override var expiryTime: Instant,
+        override var retrievalLatitude: Float,
+        override var retrievalLongitude: Float
+) : BaseWeather
