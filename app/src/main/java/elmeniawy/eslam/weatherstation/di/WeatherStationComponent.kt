@@ -6,6 +6,7 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import elmeniawy.eslam.weatherstation.WeatherStationApplication
 import elmeniawy.eslam.weatherstation.location.LocationModule
+import elmeniawy.eslam.weatherstation.net.WeatherModule
 import javax.inject.Singleton
 
 /**
@@ -20,7 +21,7 @@ import javax.inject.Singleton
     AndroidBuilder::class,
     WeatherStationModule::class,
     LocationModule::class,
-//    WeatherModule::class,
+    WeatherModule::class,
     ViewModelModule::class,
     ViewModelProviderModule::class,
     DatabaseModule::class

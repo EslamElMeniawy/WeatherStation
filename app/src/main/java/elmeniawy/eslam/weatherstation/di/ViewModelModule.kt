@@ -7,6 +7,7 @@ import dagger.MapKey
 import dagger.Module
 import dagger.multibindings.IntoMap
 import elmeniawy.eslam.weatherstation.model.*
+import elmeniawy.eslam.weatherstation.ui.WeatherViewModel
 import kotlin.reflect.KClass
 
 /**
@@ -34,10 +35,10 @@ abstract class ViewModelModule {
     abstract fun bindForecastRepository(forecastRepository: ForecastRepository):
         WeatherRepository<WeatherForecast>
 
-//    @Binds
-//    @IntoMap
-//    @ViewModelKey(WeatherViewModel::class)
-//    abstract fun bindCurrentWeatherViewModel(viewModel: WeatherViewModel): ViewModel
+    @Binds
+    @IntoMap
+    @ViewModelKey(WeatherViewModel::class)
+    abstract fun bindCurrentWeatherViewModel(viewModel: WeatherViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
