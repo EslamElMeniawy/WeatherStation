@@ -1,7 +1,7 @@
 package elmeniawy.eslam.weatherstation.model
 
-import android.arch.persistence.room.*
-import android.arch.persistence.room.ForeignKey.CASCADE
+import androidx.room.*
+import androidx.room.ForeignKey.CASCADE
 import org.threeten.bp.Instant
 
 /**
@@ -31,11 +31,11 @@ data class WeatherForecast(
 @Entity(
         foreignKeys = [
             (ForeignKey(
-                    entity = WeatherForecast::class,
-                    parentColumns = ["id"],
-                    childColumns = ["forecastId"],
-                    onDelete = CASCADE
-            ))
+                entity = WeatherForecast::class,
+                parentColumns = ["id"],
+                childColumns = ["forecastId"],
+                onDelete = CASCADE
+        ))
         ]
 )
 data class WeatherForecastItem(
