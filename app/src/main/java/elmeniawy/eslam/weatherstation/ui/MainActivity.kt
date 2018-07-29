@@ -1,7 +1,8 @@
-package elmeniawy.eslam.weatherstation
+package elmeniawy.eslam.weatherstation.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import elmeniawy.eslam.weatherstation.R
 
 class MainActivity : AppCompatActivity() {
 

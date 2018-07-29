@@ -1,5 +1,7 @@
 package elmeniawy.eslam.weatherstation.model
 
+import org.threeten.bp.Instant
+
 /**
  * CurrentWeather
  *

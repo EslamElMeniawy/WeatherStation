@@ -1,6 +1,9 @@
 package elmeniawy.eslam.weatherstation.net
 
-import android.telecom.Call
+import elmeniawy.eslam.weatherstation.model.CurrentWeather
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 /**
  * OpenWeatherMapProvider
@@ -8,27 +11,52 @@ import android.telecom.Call
  * Created by Eslam El-Meniawy on 29-Jul-2018.
  * CITC - Mansoura University
  */
-class OpenWeatherMapProvider (
-        context: Context,
-        private val appId: String,
-        okHttpClient: OkHttpClient = OkHttpClient.Builder()
-                .cache(Cache(context.cacheDir, cacheSize))
-                .addInterceptor(HttpLoggingInterceptor().apply {
-                    level = HttpLoggingInterceptor.Level.BODY
-                })
-                .build(),
-        converterFactory: Converter.Factory = MoshiConverterFactory.create(
-                Moshi.Builder()
-                        .add(KotlinJsonAdapterFactory())
-                        .build()
-        ),
-        retrofit: Retrofit = Retrofit.Builder()
-                .client(okHttpClient)
-                .baseUrl("https://api.openweathermap.org/")
-                .addConverterFactory(converterFactory)
-                .build(),
-        private val service: OpenWeatherMap = retrofit.create(OpenWeatherMap::class.java),
-        private val calls: MutableList<Call<Current>> = mutableListOf()
-
-) : CurrentWeatherProvider {
-}
+//class OpenWeatherMapProvider(
+//        private val service: OpenWeatherMap,
+//        private val appId: String,
+//        private val calls: MutableList<Call<*>> = mutableListOf()
+//) : WeatherProvider {
+//
+//    override fun requestCurrentWeather(latitude: Double, longitude: Double, callback: (CurrentWeather) -> Unit) {
+//        calls += service.currentWeather(latitude, longitude, appId).apply {
+//            enqueue(object : Callback<Current> {
+//                override fun onFailure(call: Call<Current>, t: Throwable?) {
+//                    println("Failure: $t")
+//                    calls.remove(call)
+//                }
+//
+//                override fun onResponse(call: Call<Current>, response: Response<Current>) {
+//                    calls.remove(call)
+//                    println("Response: $response")
+//                    response.body()?.apply {
+//                        callback(currentWeather)
+//                    }
+//                }
+//            })
+//        }
+//    }
+//
+//    override fun requestWeatherForecast(latitude: Double, longitude: Double, callback: (Forecast) -> Unit) {
+//        calls += service.forecast(latitude, longitude, appId).apply {
+//            enqueue(object : Callback<Forecast> {
+//                override fun onFailure(call: Call<Forecast>, t: Throwable?) {
+//                    println("Failure: $t")
+//                    calls.remove(call)
+//                }
+//
+//                override fun onResponse(call: Call<Forecast>, response: Response<Forecast>) {
+//                    calls.remove(call)
+//                    println("Response: $response")
+//                    response.body()?.also {
+//                        callback(it)
+//                    }
+//                }
+//            })
+//        }
+//    }
+//
+//    override fun cancel() {
+//        calls.forEach { it.cancel() }
+//        calls.clear()
+//    }
+//}

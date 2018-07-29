@@ -2,6 +2,8 @@ package elmeniawy.eslam.weatherstation.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import elmeniawy.eslam.weatherstation.ui.CurrentWeatherFragment
+import elmeniawy.eslam.weatherstation.ui.DailyForecastFragment
 
 /**
  * AndroidBuilder
@@ -11,9 +13,9 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class AndroidBuilder {
-//    @ContributesAndroidInjector
-//    abstract fun bindCurrentWeatherFragment(): CurrentWeatherFragment
-//
-//    @ContributesAndroidInjector
-//    abstract fun bindDailyForecastFragment(): DailyForecastFragment
+    @ContributesAndroidInjector
+    abstract fun bindCurrentWeatherFragment(): CurrentWeatherFragment
+
+    @ContributesAndroidInjector
+    abstract fun bindDailyForecastFragment(): DailyForecastFragment
 }
